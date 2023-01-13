@@ -2,10 +2,23 @@ import api.router
 import asyncio
 from api.schema import User
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from db.database import Database
 
 
 app = FastAPI()
+
+origins = [
+    "http://localhost",
+    "http://localhost:4200",
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 db = Database()
 
@@ -13,7 +26,7 @@ db = Database()
 async def Home():
     return "welcome home"
 
-@app.get('/users/getLogin/')
+@app.post('/users/login/')
 def userLogin(user: User):
     return db.getLogin(user)
 
