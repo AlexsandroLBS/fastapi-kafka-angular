@@ -1,0 +1,30 @@
+<div class="main-content bg-light  text-center overflow-hidden" style="height: 100vh;">
+    <div class="my-3 p-3">
+      <h2 class="display-5">Cadastro</h2>
+      <p class="lead">Crie sua conta para testar a API do desafio de back end. </p>
+      <p class="lead">Já tem uma conta? <a href="/login">Faça login</a> </p>
+    </div>
+    <div class="bg-dark shadow-sm mx-auto" style="width: 30%; height: 50%; border-radius: 21px; display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;    ">
+        <form style="width: 50%;">
+            <div class="form-floating" >
+              <input type="email" [(ngModel)]="userName" name="fieldName" class="form-control">
+              <label for="floatingInput" >User Name</label>
+            </div>
+            <div class="form-floating">
+              <input type="password"  [(ngModel)]="userPassword" class="form-control" name="fieldName">
+              <label for="floatingPassword" >Password</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" [(ngModel)]="confirmPassword" name="fieldName"class="form-control" (change)="verifyPassword()">
+                <label for="floatingPassword" >Confirm Password</label>
+            </div>
+            <p id="errorMessage" *ngIf="errorMessage"style="color: red;">{{errorMessage}}</p>
+            <p id="successMessage" *ngIf="successMessage"style="color: green;">{{successMessage}}</p>
+            <hr style="color: aliceblue;margin-top: 40px;">
+            <button class="w-100 btn btn-lg btn-secondary" type="submit" (click)="createAccount()">Sign Up</button>
+          </form>
+    </div>
+  </div>
