@@ -2,6 +2,7 @@
 CREATE TABLE if not exists users (
                     id SERIAL NOT NULL PRIMARY KEY,
                     user_name TEXT,
+                    user_password TEXT,
                     created_at timestamp NOT NULL
                     );
 
