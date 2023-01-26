@@ -32,7 +32,7 @@ class Database:
                 self.conn.commit()
                 self.cur.execute(f"INSERT INTO public.event_history (subscription_id, type, created_at) VALUES ({sub_id[0][0]}, 'SUBSCRIPTION_PURCHASED', NOW())")   
                 self.conn.commit()
-            elif request['action'] == "SUBSCRIPTION_CANCELED":
+            elif request['action'] == "SUBSCRIPTION_CANCELLED":
                 if status[0][0] == 1 or status[0][0] == 3:
                     self.cur.execute(f"""UPDATE public.subscription SET  status_id = 2, updated_at=NOW()
                                         WHERE  user_id={id[0][0]}""")
