@@ -1,13 +1,41 @@
-<div *ngIf="accessAllowed" class="main-content bg-light  text-center overflow-hidden" style="height: 100vh;">
+<div *ngIf="accessAllowed" class="main-content   text-center overflow-hidden" style="height: 100vh; background-color: slategrey">
     <div class="my-3 p-3">
-      <h2 class="display-5">Olá, {{user}}</h2>
+      <h2 class="display-5" style="color: aliceblue;">Olá, {{user}}</h2>
     </div>
     <div class="bg-dark shadow-sm mx-auto" style="width: 30%; height: 50%; border-radius: 21px; display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;    ">
-        <form style="width: 50%;">
-            <button class="w-100 btn btn-lg btn-secondary" type="submit" >Sign Up</button>
-            </form>
+    
+      <form *ngIf="!isLoading" style="width: 50%;">
+          <h4 style="color: aliceblue;">{{subMessage}}</h4>
+          <button class="w-100 btn btn-lg btn-success" type="submit" [disabled]="disabledBtn? null: true" 
+          (click)="sendSubNotification()">{{btnMessage}}</button>
+          <button style=" margin-top: 5%;" class="w-100 btn btn-lg btn-danger" type="submit" [disabled]="!disabledBtn? null: true"
+          (click)="sendCancelNotification()">Cancelar</button>
+          </form>
+
+    <div *ngIf="isLoading" >
+      <div  class="spinner-border" style="width: 10rem; height: 10rem; color: rgb(250, 250, 250);" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>       
     </div>
+</div>
+<div *ngIf="!accessAllowed" class="main-content  text-center overflow-hidden" style="height: 100vh; background-color: slategrey">
+  <div class="my-3 p-3">
+    <h2 class="display-5" style="color: aliceblue;">Seu acesso não foi verificado.</h2>
+  </div>
+  <div class="bg-dark shadow-sm mx-auto" style="width: 30%; height: 50%; border-radius: 21px; display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;">
+
+      <h4 style="color: gray;">Não foi possível verificar seu acesso.</h4>
+      <h4 style="color: gray;">Cadastre-se ou faça login.</h4>
+
+      <form style="width: 50%; padding-top: 20%;">
+        <button class="w-100 btn btn-lg btn-secondary" type="submit" ><a href="/cadastro" style="color: black;">Cadastro</a></button>
+        <button style=" margin-top: 5%;" class="w-100 btn btn-lg btn-secondary" type="submit" ><a href="/login" style="color: black;">Login</a></button>
+      </form>
+  </div>
 </div>
