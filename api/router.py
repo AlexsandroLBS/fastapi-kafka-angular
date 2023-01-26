@@ -18,7 +18,7 @@ async def send(request: Notification):
         await producer.send_and_wait(topic=KAFKA_TOPIC, value=value_json)
     finally:
         await producer.stop()
-
+        return True
 
 async def consume():
     consumer = AIOKafkaConsumer(KAFKA_TOPIC, loop=loop,
@@ -31,3 +31,4 @@ async def consume():
             process.sendDatabase(json.loads(req.value))
     finally:
         await consumer.stop()
+        
