@@ -113,3 +113,26 @@ class Database:
                         'error':'usuario nao existe'
                         }
                     }
+
+
+    def getUserStatus(self, userName: str):
+        self.conn = psycopg2.connect(db_config)
+        self.cur = self.conn.cursor()
+        self.cur.execute(f"""
+            SELECT status_id 
+            FROM public.users AS u 
+            INNER JOIN 
+            public.subscription AS s 
+            ON u.id = s.user_id 
+            INNER JOIN
+            public.status_table AS st
+            ON s.status_id = st.id
+            WHERE u.user_name = '{userName}'
+        """)
+        response = self.cur.fetchall()
+        self.cur.close()
+        self.conn.close()
+        return {
+            'status':response[0][0]
+        }
+       

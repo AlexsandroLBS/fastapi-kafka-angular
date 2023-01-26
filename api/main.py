@@ -26,6 +26,10 @@ db = Database()
 async def Home():
     return "welcome home"
 
+@app.get('/getUserStatus/{userName}', )
+def getStatus(userName: str):
+    return db.getUserStatus(userName)
+
 @app.post('/users/login/')
 def userLogin(user: User):
     return db.getLogin(user)
