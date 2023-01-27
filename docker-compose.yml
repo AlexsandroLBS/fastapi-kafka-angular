@@ -56,16 +56,6 @@ services:
       - pg-data:/var/lib/postgresql/data
       - ./db/sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
       - ./db/sql/fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
-
-  # myapp:
-  #   image: 'desafio-backend:latest'
-  #   container_name: myapp
-  #   ports:
-  #     - 8000:8000
-  #   depends_on:
-  #     - postgres
-  #     - kafka
-
   
 volumes:
   pg-data:
