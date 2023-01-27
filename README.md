@@ -31,6 +31,7 @@ The application will have the following execution flow:
 - HTTP Notification Receive 
 - Queuing
 - Processing and Persistence
+
 The service will recieve the following methods:
 ```http
   GET /getUserStatus/${userName}
