@@ -4,17 +4,11 @@ This project is a full stack application made with [FastAPI](https://fastapi.tia
 
 ## Execution
 
-To execute all the application, run:
+To execute the db, front and kafka, run:
 ```bash
   docker-compose up
 ```
 to run the container. 
-To execute the ui`
-```bash
-  cd subscription-ui
-  npm install 
-  npm start
-```
 And to run the API:
 ```python
   pip install -r requirements.txt
