@@ -8,7 +8,6 @@ To execute the db, front and kafka, run:
 ```bash
   docker-compose up
 ```
-to run the container. 
 And to run the API:
 ```python
   pip install -r requirements.txt
