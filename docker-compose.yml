@@ -56,6 +56,14 @@ services:
       - pg-data:/var/lib/postgresql/data
       - ./db/sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
       - ./db/sql/fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
-  
+
+  web:
+    build: ./subscription-ui/
+    container_name: web-app
+    volumes:
+      - './subscription-ui:/usr/src/app'
+    ports:
+      - "4200:4200"
+
 volumes:
   pg-data:
